@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+{%  import "header.html" as header %}
+<center>{{message}}</center>
+</head>
+<body>
+{{ header }}
+<div class=" container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:50%">Products</th>
+                    <th style="width:10%">Price</th>
+                </tr>
+        {% for foo in  products%}
+         <tr>
+             <td>
+                <img src="{{ foo.image }}" alt="..." width="100" height="100" onclick ="window.location.href='/Product?PID={{ foo.product_id }}';">
+                 <p>{{ foo.name }}</p>
+             </td>
+             <td data-th="Price">${{ foo.cost }}</td>
+         </tr>
+        {% endfor %}
+          </thead>
+        </table>
+    </div>
+</body>
+</html>

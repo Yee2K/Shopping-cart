@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  import "header.html" as header %}
+    {{ header }}
+</head>
+<body>
+<p>You are Logged In as {{ email }} would you like to sign out?</p>
+<button onclick="window.location.href='/SignOut';">SignOut</button>
+</body>
+</html>

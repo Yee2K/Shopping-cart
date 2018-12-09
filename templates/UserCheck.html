@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  import "header.html" as header %}
+    {{ header }}
+    <right>
+        <a>{{ error }}</a>
+    </right>
+</head>
+<body>
+<div class=" container">
+    <form method="post" action="/Customer" role="form">
+        <table>
+            <tr>
+                <th>
+                    <tr>
+                        <th>Email:</th>
+                        <td><input type = "text" id = "email" name = "email"></td>
+                    </tr>
+                    <tr>
+                        <th>Password:</th>
+                        <td><input type="password" id = "password" name = "password"></td>
+                    </tr>
+                    <tr>
+                        <td><input type = "submit" value = "Login"></td>
+                    </tr>
+                </th>
+            </tr>
+        </table>
+    </form>
+    <th>
+        <button onclick="window.location.href='/Register';">Register</button>
+        <button onclick="window.location.href='/Customer/Payment';">Continue as Guest</button>
+    </th>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  import "header.html" as header %}
+    {{ header }}
+</head>
+<body>
+<div class=" container">
+     <table>
+         <tr>
+             <th>PRODUCT</th>
+             <th>COST</th>
+             <th>QUANTITY</th>
+         </tr>
+         <tr>
+             <td><img src="{{ item.image }}" alt="..." width="100" height="100"></td>
+         </tr>
+         <form method = "post" action="/Product">
+             <td><input type = "text" id = "pname" name = "pname" readonly value = "{{ item.name }}"></td>
+             <td><input type = "number" id = "cost" name = "cost" readonly value = "{{ item.cost }}"></td>
+             <td><select id ="quantity" name = "quantity">
+             {% for qty in range(1,item.quantity) %}
+                 {% if item.quantity >=0 %}
+                    <option value="{{qty }}">
+                    {{ qty }}
+                    </option>
+                 {% endif %}
+             {% endfor %}
+             <td><input type = "hidden" id = "pid" name = "pid" value="{{ item.product_id }}"></td>
+             </select></td>
+             <tr>
+                 {%  if item.quantity > 1 %}
+                    <td><input type="submit" value = "Add to Cart"></td>
+                 {% endif %}
+            </tr>
+            <tr>
+                {% if item.quantity <=1 %}
+                <td>Out of Stock</td>
+                {%  endif %}
+            </tr>
+         </form>
+         <button onclick="window.location.href='/';">Return to HomePage</button>
+     </table>
+</div>
+</body>
+</html>

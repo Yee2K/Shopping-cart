@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  import "header.html" as header %}
+    <p>Thank You for your purchase</p>
+</head>
+<body>
+<table>
+    {% for items in invoice %}
+         <tr>
+            <td>{{items.product.name}}</td>
+        </tr>
+        <tr>
+            <th>
+                <img src = "{{ items.product.image}} " width="100" height="100">
+            </th>
+            <div class="tyDisplay">
+                <th>
+                    <tr>
+                        <td align="right">Cost: ${{items.product.cost}}</td>
+                    </tr>
+                    <tr>
+                        <td align="right">Quantity: {{items.quantity}}</td>
+                    </tr>
+                </th>
+            </div>
+        </tr>
+    {% endfor %}
+    <th align="center">
+        Total: ${{total }}
+    </th>
+</table>
+
+</body>
+</html>
