@@ -7,18 +7,15 @@ cart = Cart()
 
 def populate_product_DB():
     connect()
-    sql ='''INSERT INTO Products
-             (PID, pName, cost, quantity,image)
-            VALUES(?,?,?,?,?)'''
     products =[
                 [1, 'Red Dead 2', 60, 5, 'https://bit.ly/2rqWqD4'],
-                [2, 'Super Smash Bros. Ult.', 60, 2, 'https://bit.ly/2rqWqD4'],
+                [2, 'Super Smash Bros. Ult.', 60, 2, 'https://bit.ly/2QHJirA'],
                 [3, 'Total War:Warhammer:II', 30, 10, 'https://bit.ly/2C0mtXO'],
                 [4, 'Divinity 2:Original Sin', 40, 8, 'https://bit.ly/2RHLywh'],
                 [5, 'Meat', 2.22, 22, 'https://bit.ly/2G6Vn5r'],
                 [6, 'Super Meat Boy', 15, 3, 'https://bit.ly/2SBcFJC']
     ]
-    productDB(sql, products)
+    productDB(products)
 
 def listProducts():
     connect()
@@ -75,11 +72,12 @@ def addtoCart(pid, quantity):
 
 def removeCart(pid, quantity):
    count= 0
-   index=0
+   index = 0
    for item in cart:
-       if(pid == item.product.product_id):
-           index= count
+       if(pid != item.product.product_id):
            count += 1
+       elif(pid == item.product.product_id):
+           index =count
 
    product = cart.remove(index)
 
