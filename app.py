@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, flash, session, url_for
-from access import*
+#from access import*
+from cart import *
+from products import *
+from customer_account import *
 from werkzeug.utils import *
 import os
 
