@@ -1,8 +1,5 @@
 from flask import Flask, render_template, request, flash, session, url_for
-#from access import*
-from cart import *
-from products import *
-from customer_account import *
+from access import*
 from werkzeug.utils import *
 import os
 
@@ -82,7 +79,10 @@ def create_app():
             else:
                 msg = result
                 return render_template('UserCheck.html', error=msg)
-        if 'email' not in session:
+
+        elif 'email' in session:
+            return redirect((url_for('checkOut')))
+        elif 'email' not in session:
             return render_template('UserCheck.html')
         #return redirect(url_for('checkOut'))
 
@@ -93,14 +93,12 @@ def create_app():
             generateInvoice('guest')
             invoice = listCart()
             total = calculateTotal(invoice)
-            #clearCart()
             return render_template('ThankYou.html',invoice =invoice, total =total)
         else:
             email = session['email']
             generateInvoice(email)
             invoice = listCart()
             total = calculateTotal(invoice)
-            #clearCart()
             return render_template('ThankYou.html', invoice =invoice,total=total)
 
 

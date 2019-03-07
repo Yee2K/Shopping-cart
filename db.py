@@ -27,7 +27,10 @@ def close():
     if conn:
         conn.close()
 
-def productDB(sql, products):
+def productDB(products):
+    sql = '''INSERT INTO Products
+                 (PID, pName, cost, quantity,image)
+                VALUES(?,?,?,?,?)'''
     with closing(conn.cursor()) as c:
         for product in products:
             try:
